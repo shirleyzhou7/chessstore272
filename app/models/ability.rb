@@ -9,8 +9,12 @@ class Ability
     if user.role? :admin
         can :manage, :all
         
-    elsif user.role? :member
-        can :read, :all
+    elsif user.role? :manager
+
+        can :read, User
+
+        #can create, edit, read employee data
+        can :update, User 
     end
     #
     # The first argument to `can` is the action you are giving the user
