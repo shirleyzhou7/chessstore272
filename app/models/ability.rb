@@ -10,11 +10,25 @@ class Ability
         can :manage, :all
         
     elsif user.role? :manager
-
-        can :read, User
-
         #can create, edit, read employee data
+        can :create, User
         can :update, User 
+        can :read, User
+        #can  create, edit and read items in the system. This includes the power to
+        #destroy or deactivate items as appropriate and the ability to upload
+        #images of particular items.
+        can :create, Item 
+        can :update, Item 
+        can :read, Item 
+
+        #can read full price history of particular item
+        can :index, Item do |i|
+            i.item_prices.all 
+        end
+        #can create new 
+
+
+
     end
     #
     # The first argument to `can` is the action you are giving the user
