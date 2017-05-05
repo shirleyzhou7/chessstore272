@@ -25,7 +25,19 @@ class Ability
         can :index, Item do |i|
             i.item_prices.all 
         end
-        #can create new 
+        #can create new prices for a particular item
+
+        #can adjust the inventory levels for item by adding
+        #purchases to the system
+
+        #can view appropriate dashboard which includes a list of items
+        #that need to be reordered
+
+        #can read info about customers, schools, orders in system
+
+    elsif user.role? :shipper
+        #read own personal info in system
+        #edit their own name, phone, email, password info
 
 
 
