@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109233426) do
+ActiveRecord::Schema.define(version: 20170109231017) do
 
   create_table "item_prices", force: :cascade do |t|
     t.integer "item_id"
@@ -73,19 +73,6 @@ ActiveRecord::Schema.define(version: 20170109233426) do
     t.integer "min_grade"
     t.integer "max_grade"
     t.boolean "active",    default: true
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "username"
-    t.string   "password_digest"
-    t.string   "role"
-    t.boolean  "active",          default: true
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
   end
 
 end
