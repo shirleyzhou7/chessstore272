@@ -1,6 +1,7 @@
 class Admin < ActiveRecord::Migration
-  def up
+    def up
     admin = User.new
+    admin.username = "Admin"
     admin.first_name = "Admin"
     admin.last_name = "Admin"
     admin.email = "admin@example.com"
