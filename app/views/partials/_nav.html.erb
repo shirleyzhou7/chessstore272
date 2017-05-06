@@ -3,7 +3,7 @@
 <div class="top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">A&amp;M Chess</li>
+      <li class="menu-text"><%=link_to "A&M Chess", home_path %></li>
       <!-- <li><%= link_to image_tag('chess_store_title.png'), home_path %></li> -->
       <li>
         <%= link_to "Items", items_path %>
@@ -21,7 +21,13 @@
     <ul class="menu">
       <li><input type="search" placeholder="Search"></li>
       <li><button type="button" class="button">Search</button></li>
-      <li><%= link_to "Login", login_path %></li>
+       <% if logged_in? %>
+        <li><%= link_to 'Logout', logout_path %></li>
+        <li><%= current_user.proper_name %>:<%= current_user.role %></li>
+      <% else %>
+        <li><%= link_to 'Login', login_path %></li>
+      <% end %>
     </ul>
   </div>
+ 
 </div>
