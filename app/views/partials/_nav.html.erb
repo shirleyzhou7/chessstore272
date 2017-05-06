@@ -26,6 +26,7 @@
         <li><%= current_user.proper_name %>:<%= current_user.role %></li>
       <% else %>
         <li><%= link_to 'Login', login_path %></li>
+        <li><%= link_to 'Sign Up', signup_path %></li>
       <% end %>
     </ul>
   </div>
