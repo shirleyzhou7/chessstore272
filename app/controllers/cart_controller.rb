@@ -1,5 +1,7 @@
 class CartController < ApplicationController
 
+	include ChesstoreHelpers
+	include Cart
 	def index
 		
 	end
@@ -13,8 +15,7 @@ class CartController < ApplicationController
 
 	def create
 		@cart = create_cart
-
-		redirect_to home_path, notice: "Added an item to cart"
+		redirect_to home_path
 	end
 
 	def edit
@@ -22,6 +23,7 @@ class CartController < ApplicationController
 
 	def add_to_cart(item_id)
 		@cart.add_item_to_cart(item_id)
+		redirect_to home_path, notice: "Added an item to cart"
 
 	end
 
