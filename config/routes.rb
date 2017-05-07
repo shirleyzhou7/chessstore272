@@ -25,9 +25,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', as: :login
 
   #cart
-  get 'addtocart' => 'items#addtocart', as: :add_to_cart
+  get 'addtocart' => 'items#add_to_cart', as: :add_to_cart
 
-  get 'cart' => 'cart#new'
+  get 'yourcart' => 'cart#index', as: :yourcart
   
   # Set the root url
   root :to => 'home#home'  

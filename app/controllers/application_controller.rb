@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   end
   
   # handle missing pages the BSG way...
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    render template: 'errors/not_found'
-  end
+  # rescue_from ActiveRecord::RecordNotFound do |exception|
+  #   render template: 'errors/not_found'
+  # end
   
   private
   def current_user
@@ -27,4 +27,6 @@ class ApplicationController < ActionController::Base
   def check_login
     redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
   end
+
+  
 end

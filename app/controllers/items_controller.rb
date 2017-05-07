@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_to_cart]
   #before_action :check_login
+
+  include ChessStoreHelpers
+  include Cart
 
   def index
     # get info on active items for the big three...
@@ -43,6 +46,12 @@ class ItemsController < ApplicationController
       render action: 'edit'
     end
   end
+
+  def add_to_cart
+    add_item_to_cart(@item)
+    redirect_to yourcart_path(@item), notice: "Added an item to cart"
+  end
+
 
   def destroy
     @item.destroy
