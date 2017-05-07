@@ -2,15 +2,14 @@ class CartController < ApplicationController
 
 	include ChesstoreHelpers
 	include Cart
-	def index
-		
-	end
+	
 
 	def new
 	end
 
 	def show
 		@items_in_cart = get_list_of_items_in_cart
+		redirect_to cart_path, notice: "your cart is empty"
 	end
 
 	def create
