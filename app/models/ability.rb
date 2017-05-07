@@ -17,7 +17,7 @@ class Ability
         #can  create, edit and read items in the system. This includes the power to
         #destroy or deactivate items as appropriate and the ability to upload
         #images of particular items.
-        can :create, Item 
+        can :create, Item  
         can :update, Item 
         can :read, Item 
 
