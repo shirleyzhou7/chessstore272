@@ -22,13 +22,17 @@ class Ability
         can :read, Item 
 
         #can read full price history of particular item
-        can :index, Item do |i|
-            i.item_prices.all 
+        can :read, Item do |this_price_history|
+            this_price_history.item_prices.all 
         end
         #can create new prices for a particular item
-
+        can :create, Item_price  do |this_price|
+            this_item = item.id
+            this_item.include? this_price.
+        end
         #can adjust the inventory levels for item by adding
         #purchases to the system
+
 
         #can view appropriate dashboard which includes a list of items
         #that need to be reordered
@@ -40,6 +44,9 @@ class Ability
         #edit their own name, phone, email, password info
 
 
+    else
+        #guests
+        can :read, Item
 
     end
     #

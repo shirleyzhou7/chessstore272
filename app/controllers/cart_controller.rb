@@ -7,6 +7,9 @@ class CartController < ApplicationController
 	def new
 	end
 
+	def index
+	end
+
 	def show
 		@items_in_cart = get_list_of_items_in_cart
 		redirect_to cart_path, notice: "your cart is empty"
