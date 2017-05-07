@@ -1,11 +1,14 @@
 class CartController < ApplicationController
 
 	def index
-		@items_in_cart = get_list_of_items_in_cart
+		
 	end
 
 	def new
+	end
 
+	def show
+		@items_in_cart = get_list_of_items_in_cart
 	end
 
 	def create
