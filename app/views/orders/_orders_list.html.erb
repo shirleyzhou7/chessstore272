@@ -1,0 +1,25 @@
+<table class="table table-striped">
+<!-- this is a partial of a list of users for the user index page -->
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Grand Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.date, order_path(order) %></td>
+        <td><%= link_to order.grand_total, order_path(order) %></td>
+        <td>
+          <%= link_to(edit_order_path(order), class: 'button tiny radius') do %>
+            <i class="fa fa-pencil"></i>
+            &nbsp;Edit
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @orders, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<br />
