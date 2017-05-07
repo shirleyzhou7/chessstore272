@@ -15,7 +15,7 @@ module ChessStoreHelpers
 
     def destroy_cart
       session[:cart] = nil
-    end
+    end 
 
     def add_item_to_cart(item_id)
       if session[:cart].keys.include?(item_id)
