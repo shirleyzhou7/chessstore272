@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_to_cart]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   #before_action :check_login
 
   include ChessStoreHelpers
@@ -20,6 +20,9 @@ class ItemsController < ApplicationController
     @price_history = @item.item_prices.chronological.to_a
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
+    
+    render action: 'add_to_cart'
+
   end
 
   def new
