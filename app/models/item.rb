@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
 
+   #need this for option to add photo to item!
+  mount_uploader :photo, PhotoUploader
   # List of allowable categories
   CATEGORIES = [['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]
   
@@ -9,8 +11,7 @@ class Item < ActiveRecord::Base
   has_many :purchases
   has_many :orders, through: :order_items
 
-  #need this for option to add photo to item!
-  mount_uploader :photo, PhotoUploader
+
   # Scopes
   scope :alphabetical, -> { order(:name) }
   scope :active,       -> { where(active: true) }

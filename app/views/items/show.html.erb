@@ -5,6 +5,9 @@
   <div class="small-5 columns">
     <%= render :partial => "price_history" unless @price_history.empty?%>
     <%= render :partial => "similar_items" unless @similar_items.empty?%>
+    <% unless @friend.photo_url.nil? %>
+    	<p><%= image_tag @friend.photo_url %></p>
+  	<% end %>
   </div>
 </div>
 
