@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :sessions
   resources :schools
   resources :orders
+  resources :cart do
+    get :add_to_cart, on :user
   #resources :cart
 
   # Semi-static page routes

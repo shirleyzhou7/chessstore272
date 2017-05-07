@@ -11,7 +11,7 @@ module ChessStoreHelpers
 
     def clear_cart
       session[:cart] = Hash.new
-    end
+    end 
 
     def destroy_cart
       session[:cart] = nil
