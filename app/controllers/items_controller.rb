@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     @supplies = Item.active.for_category('supplies').alphabetical.paginate(:page => params[:page]).per_page(10)    
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.to_a
+    render action: 'add_to_cart'
   end
 
   def show
@@ -20,8 +21,6 @@ class ItemsController < ApplicationController
     @price_history = @item.item_prices.chronological.to_a
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
-    
-    render action: 'add_to_cart'
 
   end
 

@@ -1,9 +1,13 @@
 <div class="row">
   <div class="small-8 columns">
-  
+
     <% if session[:cart].empty?%>
     	<h1>Your cart is empty</h1>
+    <%else%>
+    	<h3>Items in cart</h3>
+      	<%= render :partial => "cart_list" %>
     <%end%>
+
   </div>
   <!-- <div class="small-1 columns">&nbsp;</div> -->
   <div class="small-4 columns">

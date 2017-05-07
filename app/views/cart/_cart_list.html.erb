@@ -1,0 +1,18 @@
+<table class="table table-striped">
+<!-- this is a partial of a list of users for the user index page -->
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items_in_cart.each do |orderitem| %>
+      <tr>
+        <td><%= link_to orderitem.id %></td>
+        <td><%= link_to orderitem.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
