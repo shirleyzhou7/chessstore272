@@ -4,8 +4,8 @@
     <tr>
       <th>Name</th>
       <th>Street 1</th>
-      <th>Street 2</th>
       <th>City</th>
+      <th>State</th>
     </tr>
   </thead>
   <tbody>
@@ -13,8 +13,8 @@
       <tr>
         <td><%= link_to school.name, school_path(school) %></td>
         <td><%= link_to school.street_1, school_path(school) %></td>
-        <td><%= link_to school.street_2, school_path(school) %></td>
         <td><%= link_to school.city, school_path(school) %></td>
+        <td><%= link_to school.state, school_path(school) %></td>
         <td>
           <%= link_to(edit_school_path(school), class: 'button tiny radius') do %>
             <i class="fa fa-pencil"></i>

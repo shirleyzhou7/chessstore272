@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   #before_action :check_login
   
   def index
-    @purchases = Purchase.chronological.to_a
+    @purchases = Purchase.chronological.paginate(:page => params[:page]).per_page(7)
   end
 
   def new
