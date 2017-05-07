@@ -1,0 +1,29 @@
+<table class="table table-striped">
+<!-- this is a partial of a list of users for the user index page -->
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Street 1</th>
+      <th>Street 2</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schools.each do |school| %>
+      <tr>
+        <td><%= link_to school.name, school_path(school) %></td>
+        <td><%= link_to school.street_1, school_path(school) %></td>
+        <td><%= link_to school.street_2, school_path(school) %></td>
+        <td><%= link_to school.city, school_path(school) %></td>
+        <td>
+          <%= link_to(edit_school_path(school), class: 'button tiny radius') do %>
+            <i class="fa fa-pencil"></i>
+            &nbsp;Edit
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @schools, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<br />

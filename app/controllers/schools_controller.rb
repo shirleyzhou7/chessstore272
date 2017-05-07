@@ -27,7 +27,7 @@ class SchoolsController < ApplicationController
 
 	def update
 		if @school.update(school_params)
-			redirect_to school_path(@school), notice "Successfully updated #{@school.name}."
+			redirect_to school_path(@school), notice: "Successfully updated #{@school.name}."
 		else
 			render action: 'edit'
 		end
