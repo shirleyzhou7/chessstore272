@@ -9,7 +9,7 @@
   <tbody>
     <% @items_in_cart.each do |orderitem| %>
       <tr>
-        <td><%= link_to orderitem.id %></td>
+        <td><%= link_to orderitem.item.name %></td>
         <td><%= link_to orderitem.quantity %></td>
       </tr>
     <% end %>

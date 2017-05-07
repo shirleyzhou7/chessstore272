@@ -32,7 +32,7 @@ class CartController < ApplicationController
 		@cart= @cart.new(cart_params)
 		#id = params[:id]
 		@cart.add_item_to_cart(item_id)
-		redirect_to yourcart_path, notice: "Added an item to cart"
+		redirect_to item_path, notice: "Added an item to cart"
 
 	end
 
