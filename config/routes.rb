@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :sessions
   resources :schools
   resources :orders
-  resources :cart do
-    get :add_to_cart, on :user
-  #resources :cart
+  resources :cart #do
+  #   get :add_to_cart, on :user
+ 
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home

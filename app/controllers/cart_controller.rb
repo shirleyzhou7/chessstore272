@@ -4,6 +4,8 @@ class CartController < ApplicationController
 		@cart = Cart.new
 	end
 
+	def show
+	end
 
 	def add_to_cart
 		@cart.add_item_to_cart
