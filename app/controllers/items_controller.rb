@@ -53,7 +53,8 @@ class ItemsController < ApplicationController
   end
 
   def addtocart
-    add_item_to_cart(@item.id)
+    item_id = @item.id.to_s
+    add_item_to_cart(item_id)
     redirect_to items_path, notice: "Added an item to cart"
   end
 

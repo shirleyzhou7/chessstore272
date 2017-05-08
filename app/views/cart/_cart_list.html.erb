@@ -12,7 +12,7 @@
       <tr>
         <td><%= link_to oi.item.name, home_path %></td>
         <td><%= oi.quantity %></td>
-        <td></td>
+        <td> <%= link_to 'Remove Item', yourcart_path, :class => 'button radius' %></td>
       </tr>
     <% end %>
   </tbody>
