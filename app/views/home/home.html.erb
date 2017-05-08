@@ -1,8 +1,10 @@
 
 <%# render :partial => 'general_home' %>
 
-<%if logged_in? && current_user.role == "admin"%>
+<%if logged_in? && current_user.role == 'admin'%>
 	<%= render :partial => 'reorder_list' %>
+<%elsif logged_in? && current_user.role =='shipper'%>
+	<%= render :partial => 'shipper_list' %>
 <%else%>
 	<%= render :partial => 'general_home' %>
 <%end%>
