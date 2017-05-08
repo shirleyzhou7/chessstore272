@@ -13,7 +13,7 @@
     <%= f.input :reorder_level, input_html: {class: "avg"} %>
     <%= f.input :active %>
     
-    <% if logged_in? && current_user.role ==("manager"|| "admin") %>
+    <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin") %>
       <div class="field">
         <%= f.label :photo %><br />
         <%= f.file_field :photo %>
