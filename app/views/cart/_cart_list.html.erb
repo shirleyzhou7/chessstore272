@@ -7,10 +7,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @items_in_cart.each do |orderitem| %>
+    <% @items_in_cart.each do |oi| %>
       <tr>
-        <td><%= link_to orderitem.item.name %></td>
-        <td><%= link_to orderitem.quantity %></td>
+        <td><%= link_to oi.item.name %></td>
+        <td><%= link_to oi.quantity %></td>
       </tr>
     <% end %>
   </tbody>
