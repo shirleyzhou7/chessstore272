@@ -1,4 +1,4 @@
-<% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin") %>   
+<% if logged_in? && (current_user.role!= 'shipper') %>   
   <div class="row">
     <div class="small-8 columns">
       <% if @schools.empty? %>

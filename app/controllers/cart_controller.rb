@@ -12,6 +12,7 @@ class CartController < ApplicationController
 
 	def index
 		@items_in_cart = get_list_of_items_in_cart
+		@total_cost = calculate_cart_items_cost
 	end
 
 	def show
@@ -29,13 +30,10 @@ class CartController < ApplicationController
 	def edit
 	end
 
-	# def add_to_cart(item_id)
-	# 	@cart= @cart.new(cart_params)
-	# 	#id = params[:id]
-	# 	@cart.add_item_to_cart(item_id)
-	# 	redirect_to item_path, notice: "Added an item to cart"
-	# end
-
+	def clearcart
+		clear_cart
+		redirect_to yourcart_path, notice: "Cleared cart."
+	end
 
 	def destroy
 		@cart.destroy_cart

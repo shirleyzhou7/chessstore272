@@ -40,6 +40,9 @@ class OrdersController < ApplicationController
 	    redirect_to orders_path, notice: "Successfully removed #{@order.name} from the system."
   	end
 
+  	def saveincart
+  		save_each_item_in_cart(@order)
+  	end
   	private
 
   	def set_order

@@ -4,8 +4,13 @@
     <% if session[:cart].empty?%>
     	<h5>Your cart is empty</h5>
     <%else%>
-    	<h3>Items in cart</h3>
+    	<h3>Cart</h3>
       	<%= render :partial => "cart_list" %>
+        <div>
+          <h6><b>Total: <%=number_to_currency(@total_cost)%></b></h6>
+          <%= link_to 'Checkout cart', clearcart_path, :class => 'button radius' %>
+          <%= link_to 'Clear Cart', clearcart_path, :class => 'button radius' %>
+        </div>
     <%end%>
 
   </div>
@@ -13,4 +18,6 @@
   <div class="small-4 columns">
     &nbsp;
   </div>
+
+ 
 </div>

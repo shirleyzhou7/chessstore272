@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :addtocart]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :addtocart, :removefromcart]
   before_action :check_login
   #authorize_resource
 
@@ -55,9 +55,14 @@ class ItemsController < ApplicationController
   def addtocart
     item_id = @item.id.to_s
     add_item_to_cart(item_id)
-    redirect_to items_path, notice: "Added an item to cart"
+    redirect_to items_path, notice: "Added #{@item.name} to cart"
   end
 
+  def removefromcart
+    item_id = @item.id.to_s
+    remove_item_from_cart(item_id)
+    redirect_to yourcart_path, notice: "Removed #{@item.name} from cart."
+  end
 
   def destroy
     @item.destroy

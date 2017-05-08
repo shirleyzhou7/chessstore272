@@ -24,10 +24,12 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy', as: :logout
   get 'login' => 'sessions#new', as: :login
 
-  #cart
+  #cart stuff
   get 'item/:id/addtocart' => 'items#addtocart', as: :addtocart
-
+  get 'item/:id/removefromcart' => 'items#removefromcart', as: :removefromcart
+  get 'clearcart' => 'cart#clearcart', as: :clearcart
   get 'yourcart' => 'cart#index', as: :yourcart
+  get 'savecart' => 'order#savecart', as: :savecart
   
   # Set the root url
   root :to => 'home#home'  

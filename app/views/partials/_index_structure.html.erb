@@ -11,8 +11,9 @@
   </div>
   <div class="small-4 columns">
     <!-- render the sidebar, if it exists -->
-    <%= render partial: "#{sidebar}" unless sidebar.blank? %>
-   
+    <%if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+      <%= render partial: "#{sidebar}" unless sidebar.blank? %>
+    <%end%>
   </div>
   <br/>
     <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin") && model_name == "purchase"%>

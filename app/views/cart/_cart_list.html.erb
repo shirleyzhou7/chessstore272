@@ -4,6 +4,7 @@
     <tr>
       <th>Item Name</th>
       <th>Quantity</th>
+      <th>Price</th>
       <th>Remove Item</th>
     </tr>
   </thead>
@@ -12,9 +13,11 @@
       <tr>
         <td><%= link_to oi.item.name, home_path %></td>
         <td><%= oi.quantity %></td>
-        <td> <%= link_to 'Remove Item', yourcart_path, :class => 'button radius' %></td>
+        <td><%= number_to_currency(oi.item.current_price * oi.quantity) %></td>
+        <td> <%= link_to 'Remove Item', removefromcart_path(oi.item_id), :class => 'button radius' %></td>
       </tr>
     <% end %>
   </tbody>
+
 </table>
 <br />
