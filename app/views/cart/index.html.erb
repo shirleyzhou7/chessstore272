@@ -1,8 +1,8 @@
 <div class="row">
   <div class="small-8 columns">
-
+  <br/>
     <% if session[:cart].empty?%>
-    	<h1>Your cart is empty</h1>
+    	<h5>Your cart is empty</h5>
     <%else%>
     	<h3>Items in cart</h3>
       	<%= render :partial => "cart_list" %>
