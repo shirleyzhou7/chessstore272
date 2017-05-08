@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-	#before_action 
+	before_action :check_login
 
 	def index
 		@schools = School.alphabetical.paginate(:page => params[:page]).per_page(7)

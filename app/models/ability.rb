@@ -33,7 +33,7 @@ class Ability
         end
         #can adjust the inventory levels for item by adding
         #purchases to the system
-
+    end
 
         #can view appropriate dashboard which includes a list of items
         #that need to be reordered

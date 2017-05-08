@@ -1,5 +1,6 @@
 class ItemPricesController < ApplicationController
-  #before_action :check_login
+  before_action :check_login
+  authorize_resource
 
   
   def index

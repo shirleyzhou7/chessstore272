@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-	#before action check_login
+	before action check_login
 
 	def index
 		@orders = Order.chronological.paginate(:page => params[:page]).per_page(7)
