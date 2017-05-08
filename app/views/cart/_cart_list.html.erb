@@ -9,8 +9,8 @@
   <tbody>
     <% @items_in_cart.each do |oi| %>
       <tr>
-        <td><%= link_to oi.item.name %></td>
-        <td><%= link_to oi.quantity %></td>
+        <td><%= link_to oi.item.name, home_path %></td>
+        <td><%= oi.quantity %></td>
       </tr>
     <% end %>
   </tbody>

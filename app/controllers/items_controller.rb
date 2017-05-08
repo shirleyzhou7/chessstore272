@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
 
   def addtocart
     add_item_to_cart(@item.id)
-    redirect_to items_path(@item), notice: "Added an item to cart"
+    redirect_to item_path(@item), notice: "Added an item to cart"
   end
 
 
