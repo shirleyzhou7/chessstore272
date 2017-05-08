@@ -6,19 +6,33 @@
       <li class="menu-text"><%=link_to "A&M Chess", home_path %></li>
       <!-- <li><%= link_to image_tag('chess_store_title.png'), home_path %></li> -->
       <li>
+        <%= link_to "Home", home_path %>
+        <ul class="menu vertical">
+          <li><%=link_to "About", about_path %></li>
+          <li><%=link_to "Contact", contact_path %></li>
+          <li><%=link_to "Privacy", privacy_path %></li>
+        </ul>
+      </li>
+      <li>
         <%= link_to "Items", items_path %>
         <ul class="menu vertical">
           <li><%= link_to "Item List", items_path %></li>
-          <li><%= link_to "Reorder List", home_path %></li>
-          <li><%= link_to "Add an Item", new_item_path %></li>
+          <%if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+            <li><%= link_to "Reorder List", home_path %></li>
+          <%end%>
+          <%if logged_in? && current_user.role == "admin"%>
+            <li><%= link_to "Add an Item", new_item_path %></li>
+          <%end%>
         </ul>
       </li>
-      <li><%= link_to "Purchases", purchases_path %></li>
-      <li><%= link_to "Prices", item_prices_path %></li>
-      <li><%= link_to "Schools", schools_path %></li>
-      <% if logged_in? && (current_user.role=="admin" || current_user.role=="manager")%>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Orders", orders_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to "Purchases", purchases_path %></li>
+        <li><%= link_to "Prices", item_prices_path %></li>
+        <li><%= link_to "Schools", schools_path %></li>
+        <% if (current_user.role=="admin" || current_user.role=="manager")%>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Orders", orders_path %></li>
+        <%end%>
       <%end%>
     </ul>
   </div>
