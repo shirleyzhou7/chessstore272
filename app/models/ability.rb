@@ -10,13 +10,14 @@ class Ability
         can :manage, :all
         
     elsif user.role? :manager
+        #can read any info in system
+        can :read, :all
         #can create, edit, read employee data
         can :create, User
         can :update, User 
         can :read, User
-        #can  create, edit and read items in the system. This includes the power to
-        #destroy or deactivate items as appropriate and the ability to upload
-        #images of particular items.
+        #can  create, edit and read items in the system. 
+       
         can :create, Item  
         can :update, Item 
         can :read, Item 
@@ -37,16 +38,49 @@ class Ability
         #can view appropriate dashboard which includes a list of items
         #that need to be reordered
 
-        #can read info about customers, schools, orders in system
-
     elsif user.role? :shipper
         #read own personal info in system
+        can :show, User do |u|
+            u.id == user.id
+        end
         #edit their own name, phone, email, password info
+        can :update, User do |u|
+            u.id ==user.id
+        end
+        #can read info related to orders that need to be shipped
+        #from their home page, button to check off if shipped
+        can :read, Order do |o|
+            unshipped_orders = o.unshipped
+        end
+        #can read info about items on inventory lvl
+        #but not price history
+        can :read, Item 
 
-
-    else
-        #guests
+    elsif user.role? :customer
+        #can read own info in system
+        can :show, User do |u|
+            u.id == user.id
+        end
+        #can edit own info
+        can :update, User do |u|
+            u.id ==user.id
+        end
+        #can place new order
+        #can cancel unshipped orders
+        #can read info on item + imgs, not inv lvl or price hist
+        can :read, Item 
+        #can see list of own past orders
+        #and itemized list of items of particular order
+        can :show, Order do |this_order|
+            my_orders = user.orders.map(&:id)
+            my_orders.include? this_order.id
+        end
+    else #guests
+        #can read info on items, not inv lvl or price history
         can :read, Item
+
+        #can create new user account
+        #can add school
 
     end
     #
