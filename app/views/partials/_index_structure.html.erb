@@ -12,11 +12,13 @@
   <div class="small-4 columns">
     <!-- render the sidebar, if it exists -->
     <%= render partial: "#{sidebar}" unless sidebar.blank? %>
+   
   </div>
+  <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin") && model_name == "purchases"%>
+      <!-- Add a button for new instances of object -->
+      <%= link_to(eval("new_#{model_name}_path"), class: "button radius") do %>
+        <!-- <i class="fa fa-plus"></i> -->
+        &nbsp;Add a New <%= model_name.capitalize %>
+      <% end %>   
+  <%end%>
 </div>
-
-<!-- Add a button for new instances of object -->
-<%= link_to(eval("new_#{model_name}_path"), class: "button radius") do %>
-  <!-- <i class="fa fa-plus"></i> -->
-  &nbsp;Add a New <%= model_name.capitalize %>
-<% end %>

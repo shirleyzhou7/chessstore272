@@ -13,9 +13,11 @@
   </div>
 </div>
 
-<!-- Add a button for new users -->
-<%= link_to(new_user_path, class: "button radius") do %>
-  <i class="fa fa-plus"></i>
-  &nbsp;Add a New User
-<% end %>
+<% if logged_in? && (current_user.role =="admin") %>
+  <!-- Add a button for new users -->
+  <%= link_to(new_user_path, class: "button radius") do %>
+    <i class="fa fa-plus"></i>
+    &nbsp;Add a New User
+  <% end %>
+<%end%>
 
