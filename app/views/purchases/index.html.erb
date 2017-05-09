@@ -1,5 +1,23 @@
 
-
-<%= render partial: "partials/index_structure",locals: {model_name: "purchase", primary: "recent_purchases", 
-
-	secondary: nil, sidebar: nil} %>
+<div class="row">
+  <div class="small-8 columns">
+    <div id= 'rp'>
+    <%= render partial: "recent_purchases" %>
+    <!-- sometimes we want another partial below -->
+   	</div>
+    
+  </div>
+  <div class="small-4 columns">
+    <!-- render the sidebar, if it exists -->
+    
+  </div>
+  <br/>
+    <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin")%>
+      <!-- Add a button for new instances of object -->
+    <div id = "new_purchase_list"> 
+      <%= link_to(new_purchase_path, id: 'new_purchase_link', class: "button radius", remote: true) do %>
+        <!-- <i class="fa fa-plus"></i> -->
+        &nbsp;Add a New Purchase
+      <% end %>   
+    <%end%>
+</div>
