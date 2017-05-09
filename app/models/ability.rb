@@ -22,18 +22,15 @@ class Ability
         can :update, Item 
         can :read, Item 
 
-        #can read full price history of particular item
-        can :read, Item do |this_price_history|
-            this_price_history.item_prices.all 
-        end
+        # #can read full price history of particular item
+        # can :read, Item do |this_price_history|
+        #     this_price_history.item_prices.all 
+        # end
         #can create new prices for a particular item
-        can :create, Item_price  do |this_price|
-            this_item = item.id
-            this_item.include? this_price.
-        end
+        can :create, ItemPrice  
         #can adjust the inventory levels for item by adding
         #purchases to the system
-    end
+    
 
         #can view appropriate dashboard which includes a list of items
         #that need to be reordered
@@ -55,7 +52,7 @@ class Ability
         #can read info about items on inventory lvl
         #but not price history
         can :read, Item 
-
+    
     elsif user.role? :customer
         #can read own info in system
         can :show, User do |u|
@@ -75,6 +72,7 @@ class Ability
             my_orders = user.orders.map(&:id)
             my_orders.include? this_order.id
         end
+    
     else #guests
         #can read info on items, not inv lvl or price history
         can :read, Item
@@ -83,7 +81,10 @@ class Ability
         #can add school
 
     end
-    #
+    
+  end
+end
+#
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
@@ -101,5 +102,3 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
-end

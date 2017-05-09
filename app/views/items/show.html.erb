@@ -4,7 +4,9 @@
   </div>
   <div class="small-5 columns">
      <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin") %>
-      <%= render :partial => "price_history" unless @price_history.empty?%>
+        <div id="mypriceblock">
+        <%= render :partial => "price_history" unless @price_history.empty?%>
+        </div>
     <%end%>
     <%= render :partial => "similar_items" unless @similar_items.empty?%>
     <% unless @item.photo_url.nil? %>

@@ -6,7 +6,9 @@
         <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
       <% end %>
     </ul>
-
-    <%= link_to("Change Price", new_item_price_path(this_item_id: @item.id), class: 'button tiny radius') %>
-  </div>
+    <div id = "new_item_price_list"> 
+	    <%= link_to( new_item_price_path(item_id: @item.id), id: 'new_item_price_link', class: 'button tiny radius', remote: true) do %>
+	    	Change Price
+	    <%end%>
+  	</div>
 <% end %>
