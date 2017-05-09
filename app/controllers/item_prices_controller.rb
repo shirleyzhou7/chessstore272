@@ -12,12 +12,16 @@ class ItemPricesController < ApplicationController
   end
 
   def create
-    @item_price = ItemPrice.new(item_price_params)
-    @item_price.start_date = Date.current
 
+    @item_price = ItemPrice.new(item_price_params)
+    @item = @item_price.item
+    @item_price.start_date = Date.current
+    @price_history = @item.item_prices.chronological.to_a
+    # everyone sees similar items in the sidebar
+    @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
     respond_to do |format|
       if @item_price.save
-        @item = @item_price.item
+        
         format.html { redirect_to item_path(@item), notice:  "Changed the price of #{@item.name}." }
         format.json { render action: 'show', status: :created, location: @item_price }
         #@item = @item_price.item
