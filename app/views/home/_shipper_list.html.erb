@@ -15,7 +15,7 @@
 	      <% @orders_to_ship.each do |o| %>
 	        <tr>
 	          <td><%= link_to o.id %></td>
-	          <td><%= o.school.name %></td>
+	          <td><%= o.order.school.name %></td>
 	          <td>  <%= link_to 'Ship', 
 	          home_path, :class => 'button radius' %></td>
 	        </tr>
@@ -24,7 +24,7 @@
 	  </table>
 
 	</div>
-	<%= will_paginate @orders, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+	
 </div>
 <% else %>
   <p>There are no items that need to be reorder at this time.</p>
