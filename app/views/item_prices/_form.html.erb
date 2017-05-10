@@ -3,6 +3,7 @@
     <legend><%= controller.action_name.capitalize %> Price</legend>
 
     <%= f.input :item_id, collection: Item.active.to_a, include_blank: true, input_html: {class: "avg"} %>
+    <%= f.input :category, collection: ['wholesale', 'manufacturer'], input_html: {class: "avg"} %>
     <%= f.input :price, label: 'New Price', input_html: {class: "avg"} %>
 
 
