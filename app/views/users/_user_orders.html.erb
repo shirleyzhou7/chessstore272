@@ -1,0 +1,23 @@
+<h3>Your Unshipped Orders</h3>
+
+<table class="table table-striped">
+<!-- this is a partial of a list of users for the user index page -->
+  <thead>
+    <tr>
+      
+      <th>Date</th>
+      <th>Grand Total</th>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_orders.each do |uo| %>
+      <tr>
+        
+        <td><%= uo.date.strftime("%m/%d/%Y") %></td>
+        <td><%= uo.grand_total%></td>
+        <td><%= uo.school.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

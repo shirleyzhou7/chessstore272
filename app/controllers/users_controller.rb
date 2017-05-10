@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user_assignments = @user.assignments.active.by_project
+		@user_orders = @user.orders.not_shipped.all.to_a
+
 		#@created_tasks = Task.for_creator(@user.id).by_name
 		#@completed_tasks = Task.for_completer(@user.id).by_name
 	end

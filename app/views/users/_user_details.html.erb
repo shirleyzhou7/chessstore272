@@ -1,0 +1,12 @@
+<h3>User Information</h3>
+
+<p>Name: <%= @user.proper_name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Phone Number: <%= @user.phone %></p>
+<p>Username: <%= @user.username %></p>
+
+
+<%= link_to(edit_user_path(@user), class: 'button tiny radius') do %>
+     <i class="fa fa-pencil"></i>
+     &nbsp;Edit
+<% end %>

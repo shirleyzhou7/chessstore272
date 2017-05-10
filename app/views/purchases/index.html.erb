@@ -1,15 +1,12 @@
 
 <div class="row">
   <div class="small-8 columns">
-    <div id= 'rp'>
-    <%= render partial: "recent_purchases" %>
-    <!-- sometimes we want another partial below -->
+    <div id= 'rp'> 
+      <%= render partial: "recent_purchases" %>
    	</div>
     
   </div>
   <div class="small-4 columns">
-    <!-- render the sidebar, if it exists -->
-    
   </div>
   <br/>
     <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin")%>

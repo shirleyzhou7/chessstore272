@@ -1,0 +1,10 @@
+<div class="small-7 columns">
+      <div id = "item_page">
+        <%= render :partial => "user_details" %>
+      </div>
+</div>
+<div class="small-5 columns">
+<% if logged_in? && current_user.role == "customer" %>
+	<%=render :partial => "user_orders"%>
+<%end%>
+</div>

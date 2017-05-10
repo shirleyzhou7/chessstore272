@@ -26,12 +26,18 @@
         </ul>
       </li>
       <% if logged_in? %>
-        <li><%= link_to "Purchases", purchases_path %></li>
-        <li><%= link_to "Prices", item_prices_path %></li>
-        <li><%= link_to "Schools", schools_path %></li>
+        <li>
+        <%= link_to "My Info", user_path(current_user)%>
+        <ul class="menu vertical">
+          <li><%= link_to "Orders", user_path(current_user)%></li>
+          <li><%= link_to "Edit Info", edit_user_path(current_user)%></li>
+        </ul>
         <% if (current_user.role=="admin" || current_user.role=="manager")%>
+          <li><%= link_to "Prices", item_prices_path %></li>
+          <li><%= link_to "Purchases", purchases_path %></li>
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Orders", orders_path %></li>
+          <li><%= link_to "Schools", schools_path %></li>
         <%end%>
       <%end%>
     </ul>
