@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy', as: :logout
   get 'login' => 'sessions#new', as: :login
 
+  #orderitem
+  get 'order_item/:id/ship' => 'order_items#ship', as: :ship
+
   #cart stuff
   get 'item/:id/addtocart' => 'items#addtocart', as: :addtocart
   get 'item/:id/removefromcart' => 'items#removefromcart', as: :removefromcart

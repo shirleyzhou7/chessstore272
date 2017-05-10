@@ -17,7 +17,7 @@
 	          <td><%= link_to o.id %></td>
 	          <td><%= o.order.school.name %></td>
 	          <td>  <%= link_to 'Ship', 
-	          home_path, :class => 'button radius' %></td>
+	          ship_path(o), :class => 'button radius' %></td>
 	        </tr>
 	      <% end %>
 	    </tbody>
