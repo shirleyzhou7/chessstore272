@@ -23,9 +23,18 @@ class OrdersController < ApplicationController
 		@order.user = current_user 
 		@order.date = Date.today
 		@order.grand_total = calculate_cart_items_cost + calculate_cart_shipping
-		@order.
-		if order.save
-			redirect_to order_path(@order), notice: "Successfully created #{@order.name}."
+		unless @order.expiration_month.nil?
+			@order.expiration_month = @order.expiration_month.to_i
+		end
+		unless @order.expiration_year.nil?
+			@order.expiration_year = @order.expiration_year.to_i
+		end
+		if @order.save
+			save_each_item_in_cart(@order)
+			@order.pay
+			clear_cart
+			
+			redirect_to home_path, notice: "Successfully created order."
 		else 
 			render action: 'new'
 		end
@@ -33,7 +42,7 @@ class OrdersController < ApplicationController
 
 	def update
 		if @order.update(order_params)
-			redirect_to order_path(@order), notice: "Successfully updated #{@order.name}."
+			redirect_to order_path(@order), notice: "Successfully updated order."
 		else
 			render action: 'edit'
 		end
@@ -42,7 +51,7 @@ class OrdersController < ApplicationController
 
 	def destroy
 	    @order.destroy
-	    redirect_to orders_path, notice: "Successfully removed #{@order.name} from the system."
+	    redirect_to orders_path, notice: "Successfully removed order from the system."
   	end
 
   	def saveincart
@@ -55,6 +64,6 @@ class OrdersController < ApplicationController
   	end
 
   	def order_params
-  		params.require(:order).permit(:date, :grand_total, :payment_receipt)
+  		params.require(:order).permit(:school_id, :expiration_year, :expiration_month, :credit_card_number)
   	end
 end

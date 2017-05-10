@@ -8,7 +8,7 @@
       	<%= render :partial => "cart_list" %>
         <div>
           <h6><b>Total: <%=number_to_currency(@total_cost)%></b></h6>
-          <%= link_to 'Checkout cart', clearcart_path, :class => 'button radius' %>
+          <%= link_to 'Checkout cart', new_order_path, :class => 'button radius' %>
          
           <%= link_to 'Clear Cart', clearcart_path, :class => 'button radius' %>
         </div>
