@@ -65,7 +65,7 @@ class Ability
         #can place new order
         #can cancel unshipped orders
         #can read info on item + imgs, not inv lvl or price hist
-        can :read, Item @
+        can :read, Item 
         #can see list of own past orders
         #and itemized list of items of particular order
         can :show, Order do |this_order|

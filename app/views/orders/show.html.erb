@@ -16,7 +16,7 @@
 	      <tr>
 	        
 	        <td><%= o.item.name %></td>
-	        <td><%= o.item.current_price%></td>
+	        <td><%= number_to_currency(o.item.current_price)%></td>
 	        <td><%= o.item.category %></td>
 	      </tr>
 	    <% end %>
@@ -24,6 +24,11 @@
 	</table>
 
 
-	<%= render partial: "partials/object_options", locals: {model_name: "order", object: @order}  %>
+	<%= render partial: "partials/object_options", locals: {model_name: "order", object: @order} %>
+	<%if Order.not_shipped.include?(@order)%>
+		<%= link_to order_path(@order), method: 'delete', data: {confirm: "Are you sure you want to permanently delete this order?"}, class: 'button radius alert' do %>
+			Delete Order
+		<%end%>
+	<%end%>
 </div>
 

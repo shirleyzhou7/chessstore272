@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
 
 	def destroy
 	    @order.destroy
-	    redirect_to orders_path, notice: "Successfully removed order from the system."
+	    redirect_to user_path(current_user), notice: "Successfully removed order from the system."
   	end
 
   	def saveincart
