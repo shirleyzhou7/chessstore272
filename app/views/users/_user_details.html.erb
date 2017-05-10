@@ -6,7 +6,5 @@
 <p>Username: <%= @user.username %></p>
 
 
-<%= link_to(edit_user_path(@user), class: 'button tiny radius') do %>
-     <i class="fa fa-pencil"></i>
-     &nbsp;Edit
-<% end %>
+<!-- Add buttons to list all, edit project or destroy object -->
+ <%= render partial: "partials/object_options", locals: {model_name: "user", object: @user}  %>

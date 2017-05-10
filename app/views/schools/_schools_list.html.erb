@@ -6,25 +6,16 @@
       <th>Street 1</th>
       <th>City</th>
       <th>State</th>
-      <% if logged_in? && (current_user.role!= 'customer') %>
-        <th>Edit</th>
-      <%end%>
     </tr>
   </thead>
   <tbody>
     <% @schools.each do |school| %>
       <tr>
-        <td><%= link_to school.name, school_path(school) %></td>
-        <td><%= link_to school.street_1, school_path(school) %></td>
-        <td><%= link_to school.city, school_path(school) %></td>
-        <td><%= link_to school.state, school_path(school) %></td>
+        <td><%=  school.name %></td>
+        <td><%= school.street_1 %></td>
+        <td><%= school.city %></td>
+        <td><%= school.state %></td>
         <% if logged_in? && (current_user.role!= 'customer') %>
-          <td>
-            <%= link_to(edit_school_path(school), class: 'button tiny radius') do %>
-              <i class="fa fa-pencil"></i>
-              &nbsp;Edit
-            <% end %>
-          </td>
         <%end%>
       </tr>
     <% end %>

@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  #before_action :check_login
+  load_and_authorize_resource
   
   def index
     @purchases = Purchase.chronological.paginate(:page => params[:page]).per_page(7)

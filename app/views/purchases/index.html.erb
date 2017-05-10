@@ -9,12 +9,5 @@
   <div class="small-4 columns">
   </div>
   <br/>
-    <% if logged_in? && (current_user.role =="manager"|| current_user.role =="admin")%>
-      <!-- Add a button for new instances of object -->
-    <div id = "new_purchase_list"> 
-      <%= link_to(new_purchase_path, id: 'new_purchase_link', class: "button radius", remote: true) do %>
-        <i class="fa fa-plus"></i>
-        &nbsp;Add a New Purchase
-      <% end %>   
-    <%end%>
+    
 </div>

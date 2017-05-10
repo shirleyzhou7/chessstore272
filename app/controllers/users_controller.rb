@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
-	
+	#load_and_authorize_resource
 
 	def index
+		authorize! :index, @user
 		@users = User.alphabetical.paginate(:page => params[:page]).per_page(7)
 	end
 
 	def show
+		authorize! :show, @user
 		@user_orders = @user.orders.not_shipped.all.to_a
 
 		#@created_tasks = Task.for_creator(@user.id).by_name
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		authorize! :update, @user
 		if @user.update_attributes(user_params)
 		  flash[:notice] = "#{@user.proper_name} is updated."
 		  redirect_to @user
@@ -41,6 +44,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+		authorize! :update, @user
 		@user.destroy
 		flash[:notice] = "Successfully removed #{@user.proper_name} from Arbeit."
 		redirect_to users_url
