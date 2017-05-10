@@ -7,7 +7,7 @@ class OrderItemsController < ApplicationController
 	
 
 	def ship
-		respond_to |format| do
+		respond_to do |format| 
 			@order_item = OrderItem.find(params[:id])
 			@order_item.shipped
 			@orders_to_ship = OrderItem.unshipped.to_a
