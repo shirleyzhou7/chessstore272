@@ -5,6 +5,8 @@
 	<%= render :partial => 'reorder_list' %>
 <%elsif logged_in? && current_user.role =='shipper'%>
 	<%= render :partial => 'shipper_list' %>
+<%elsif logged_in? && current_user.role == 'admin' %>
+	<%= render :partial => 'admin_page' %>
 <%else%>
 	<%= render :partial => 'general_home' %>
 <%end%>

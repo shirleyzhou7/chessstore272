@@ -36,8 +36,20 @@
     <%= f.password_field :password_confirmation %>
   </p>
 	<p>
-    <%= f.label :role %><br />
-    <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
+
+   <%= f.hidden_field :role, :value => 'customer'%>
+    <% if logged_in? && current_user.role=="admin" %>
+      <div class="row">
+        <div class="medium-4 medium-centered columns" >
+              <p>
+                <%= f.select :role, User::ROLES, :prompt => "User Role" %>
+              </p>
+        </div>
+      </div>
+    <% else %>
+      <%= f.hidden_field :role, :value => 'customer'%>
+    <% end %>
+
   </p>
 	
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>

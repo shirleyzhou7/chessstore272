@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
 
 
 	def destroy
+		authorize! :destroy, @order
 	    @order.destroy
 	    redirect_to user_path(current_user), notice: "Successfully removed order from the system."
   	end

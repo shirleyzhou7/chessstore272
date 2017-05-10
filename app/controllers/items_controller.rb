@@ -25,15 +25,16 @@ class ItemsController < ApplicationController
   end
 
   def new
-  
+    authorize! :new, @item
     @item = Item.new
   end
 
   def edit
-
+    authorize! :edit, @item
   end
 
   def create
+    authorize! :create, @item
     @item = Item.new(item_params)
     if @item.save
       redirect_to item_path(@item), notice: "Successfully created #{@item.name}."
@@ -64,6 +65,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @item
     @item.destroy
     redirect_to items_path, notice: "Successfully removed #{@item.name} from the system."
   end

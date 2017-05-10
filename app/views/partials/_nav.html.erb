@@ -29,7 +29,9 @@
         <li>
         <%= link_to "My Info", user_path(current_user)%>
         <ul class="menu vertical">
-          <li><%= link_to "Orders", user_path(current_user)%></li>
+          <% if current_user.role == "customer"%>
+            <li><%= link_to "Orders", user_path(current_user)%></li>
+          <%end%>
           <li><%= link_to "Edit Info", edit_user_path(current_user)%></li>
         </ul>
         <% if (current_user.role=="admin" || current_user.role=="manager")%>

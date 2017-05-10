@@ -21,19 +21,17 @@ class Ability
         can :create, Item  
         can :update, Item 
         can :read, Item 
+        can :edit, Item
 
         # #can read full price history of particular item
-        # can :read, Item do |this_price_history|
-        #     this_price_history.item_prices.all 
-        # end
+        can :read, ItemPrice
+        
         #can create new prices for a particular item
         can :create, ItemPrice  
         #can adjust the inventory levels for item by adding
-        #purchases to the system
-    
-
-        #can view appropriate dashboard which includes a list of items
-        #that need to be reordered
+         #purchases to the system
+        can :create, Purchase
+       
 
     elsif user.role? :shipper
         #read own personal info in system
@@ -72,6 +70,8 @@ class Ability
             my_orders = user.orders.map(&:id)
             my_orders.include? this_order.id
         end
+
+        can :destroy, Order
     
     else #guests
         #can read info on items, not inv lvl or price history

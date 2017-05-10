@@ -35,6 +35,7 @@ class SchoolsController < ApplicationController
 
 
 	def destroy
+		authorize! :destroy, @school
 	    @school.destroy
 	    redirect_to schools_path, notice: "Successfully removed #{@school.name} from the system."
   	end
