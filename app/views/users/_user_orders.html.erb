@@ -16,7 +16,7 @@
       <tr>
         
         <td><%= uo.date.strftime("%m/%d/%Y") %></td>
-        <td><%= uo.grand_total%></td>
+        <td><%= number_to_currency (uo.grand_total)%></td>
         <td><%= uo.school.name %></td>
         <td><%= link_to 'Details', order_path(uo)%></td>
       </tr>
