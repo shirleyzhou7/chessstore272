@@ -77,9 +77,8 @@ class Ability
         #can read info on items, not inv lvl or price history
         can :read, Item
 
-        #can create new user account
-        #can add school
-
+        can :create, User
+        can :create, School
     end
     
   end

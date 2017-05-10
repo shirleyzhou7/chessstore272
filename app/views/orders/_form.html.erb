@@ -1,0 +1,21 @@
+<%= simple_form_for @order, html: { class: 'form-horizontal', multipart: true } do |f| %>
+	<fieldset>
+  	
+    <p>
+       <%= f.input :credit_card_number, input_html: {class: "avg"} %>
+      
+    </p>
+    <p>
+      <%=f.input :expiration_month %><br />
+    </p>
+    <p>
+      <%= f.input :expiration_year %><br />
+    </p>
+
+  	<p>
+      <%= f.input :school_id, collection: School.active.to_a, :prompt => "Select ..." %>
+    </p>
+  	
+    <p><%= f.submit (@order.new_record? ? "Order": "Update") %></p>
+  </fieldset>
+<% end %>

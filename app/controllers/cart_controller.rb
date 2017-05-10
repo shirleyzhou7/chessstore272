@@ -1,5 +1,4 @@
 class CartController < ApplicationController
-	before_action :check_login
 	
 	include ChessStoreHelpers
 	include Cart

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-
-	before action check_login
+	include ChessStoreHelpers
+	include Shipping
+	include Cart
 
 	def index
 		@orders = Order.chronological.paginate(:page => params[:page]).per_page(7)
@@ -19,6 +20,10 @@ class OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(order_params)
+		@order.user = current_user 
+		@order.date = Date.today
+		@order.grand_total = calculate_cart_items_cost + calculate_cart_shipping
+		@order.
 		if order.save
 			redirect_to order_path(@order), notice: "Successfully created #{@order.name}."
 		else 

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :addtocart, :removefromcart]
-  before_action :check_login
-  #authorize_resource
+ 
+  
 
   include ChessStoreHelpers
   include Cart
@@ -25,12 +25,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    authorize! :new, @item
+  
     @item = Item.new
   end
 
   def edit
-    authorize! :edit, @item
+
   end
 
   def create
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    authorize! :update, @item
+  
     if @item.update(item_params)
       redirect_to item_path(@item), notice: "Successfully updated #{@item.name}."
     else
