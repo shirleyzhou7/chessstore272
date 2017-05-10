@@ -1,0 +1,29 @@
+#date, grand total, cancel button, list of orderitems
+<div class="small-7 columns">
+	<h3>List of Order Items</h3>
+	<table class="table table-striped">
+	<!-- this is a partial of a list of users for the user index page -->
+	  <thead>
+	    <tr>
+	      
+	      <th>Name</th>
+	      <th>Price</th>
+	      <th>Category</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @oi.each do |o| %>
+	      <tr>
+	        
+	        <td><%= o.item.name %></td>
+	        <td><%= o.item.current_price%></td>
+	        <td><%= o.item.category %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+
+	<%= render partial: "partials/object_options", locals: {model_name: "order", object: @order}  %>
+</div>
+

@@ -1,14 +1,16 @@
 class OrdersController < ApplicationController
+	before_action :set_order, only: [:show, :edit, :update, :destroy]
 	include ChessStoreHelpers
 	include Shipping
 	include Cart
 
 	def index
+		authorize! :index, @order
 		@orders = Order.chronological.paginate(:page => params[:page]).per_page(7)
 	end
 
 	def show
-
+		@oi = @order.order_items
 	end
 
 	def new
@@ -16,6 +18,7 @@ class OrdersController < ApplicationController
 	end
 
 	def edit
+		autorize! :edit, @order
 	end
 
 	def create

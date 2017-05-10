@@ -8,6 +8,7 @@
       <th>Date</th>
       <th>Grand Total</th>
       <th>School</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
         <td><%= uo.date.strftime("%m/%d/%Y") %></td>
         <td><%= uo.grand_total%></td>
         <td><%= uo.school.name %></td>
+        <td><%= link_to 'Details', order_path(uo)%></td>
       </tr>
     <% end %>
   </tbody>
