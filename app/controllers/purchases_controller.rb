@@ -3,6 +3,7 @@ class PurchasesController < ApplicationController
   
   def index
     @purchases = Purchase.chronological.paginate(:page => params[:page]).per_page(7)
+    
   end
 
   def new

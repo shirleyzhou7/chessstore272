@@ -21,5 +21,10 @@
     </tbody>
   </table>
 <% end %>
-<p>&nbsp;</p>
-<%= will_paginate @schools, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+
+
+<span class="paginate">
+  <%= will_paginate @purchases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+</span>
+
+
