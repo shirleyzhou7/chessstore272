@@ -2,27 +2,32 @@
 
 <% unless @orders_to_ship.nil? || @orders_to_ship.empty? %>
 <div class="row">
-  	<div class="small-8 columns">
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th width="50">Order Number</th>
-	        <th width="100">Address</th>
-	        <th width="70">Ship?</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <% @orders_to_ship.each do |o| %>
-	        <tr>
-	          <td><%= link_to o.id %></td>
-	          <td><%= o.order.school.name %></td>
-	          <td>  <%= link_to 'Ship', 
-	          ship_path(o), :class => 'button radius' %></td>
-	        </tr>
-	      <% end %>
-	    </tbody>
-	  </table>
+	<div id = "ship_table">
+	  	<div class="small-8 columns">
+		  <table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th width="50">Order Number</th>
+		        <th width="100">Address</th>
+		        <th width="70">Ship Item</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <% @orders_to_ship.each do |o| %>
+		        <tr>
+		          <td><%= link_to o.id %></td>
+		          <td><%= o.order.school.name %></td>
+		          <td>  
+		          <%= link_to(ship_path(o), id: 'shipped_link', class: 'button radius', remote: true) do %>
+		          		Ship
+		          <%end%> 
+		          </td>
+		        </tr>
+		      <% end %>
+		    </tbody>
+		  </table>
 
+		</div>
 	</div>
 	
 </div>

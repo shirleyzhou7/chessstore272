@@ -7,9 +7,14 @@ class OrderItemsController < ApplicationController
 	
 
 	def ship
-		@order_item = OrderItem.find(params[:id])
-		@order_item.shipped
-		redirect_to home_path
+		respond_to |format| do
+			@order_item = OrderItem.find(params[:id])
+			@order_item.shipped
+			@orders_to_ship = OrderItem.unshipped.to_a
+			format.html 
+			format.js
+		end
+		
 	end
 
 	private
