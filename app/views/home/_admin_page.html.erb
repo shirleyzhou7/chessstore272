@@ -1,11 +1,13 @@
-<h2> The A&amp;M Chess store administration page</h2>
+<h2> The A&amp;M Chess Store Administration Page</h2>
 
 <div class= "row">
 	<div class = "small-7 columns">
 		<h4>Items that need to be reordered</h4>
 		<%= render :partial => 'reorder_list' %>
+	<div class = "small-4 columns">
 		<h5><b>Employee Account Setup</b></h5>
 		<%= link_to 'Create New User', new_user_path, class: 'button alert radius' %>
+	</div>
 	</div>
 
 	<div class = "small-5 columns">

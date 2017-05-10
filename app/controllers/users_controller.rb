@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		authorize! :edit, @user
 	end
 
 	def create

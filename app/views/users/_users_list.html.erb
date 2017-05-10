@@ -4,6 +4,7 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Role</th>
       <th>Edit</th>
     </tr>
   </thead>
@@ -12,7 +13,7 @@
       <tr>
         <td><%= link_to user.name, user_path(user) %></td>
         <td><%= mail_to user.email, user.email %></td>
-        
+        <td><%= user.role%></td>
         <td>
           <%= link_to(edit_user_path(user), class: 'button tiny radius') do %>
             <i class="fa fa-pencil"></i>
@@ -23,5 +24,7 @@
     <% end %>
   </tbody>
 </table>
+<class="paginate">
 <%= will_paginate @users, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+</div>
 <br />
