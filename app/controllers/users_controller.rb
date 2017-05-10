@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 	def destroy
 		authorize! :update, @user
 		@user.destroy
-		flash[:notice] = "Successfully removed #{@user.proper_name} from Arbeit."
+		flash[:notice] = "Successfully removed #{@user.proper_name} from store."
 		redirect_to users_url
 	end
 
